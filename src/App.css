@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "Roboto-Light";
+    src: url(./assets/fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url(./assets/fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url(./assets/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "RobotoMono-Regular";
+    src: url(./assets/fonts/RobotoMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: "RobotoSlab-Bold";
+    src: url(./assets/fonts/RobotoSlab-Bold.ttf);
+}
+
+@font-face {
+    font-family: "RobotoSlab-Light";
+    src: url(./assets/fonts/RobotoSlab-Light.ttf);
+}
+
+@font-face {
+    font-family: "RobotoSlab-Regular";
+    src: url(./assets/fonts/RobotoSlab-Regular.ttf);
+}
+
+:root {
+
+    /* COLORS */
+    --color-100: #FFFFFF;
+    --color-200: #F5F5F5;
+    --color-300: #E4E4E4;
+    --color-400: #C1C4CB;
+    --color-500: #7C8187;
+    --color-600: #5A6069;
+    --color-700: #35393F;
+    --color-800: #2B2D31;
+    --color-900: #1D1F22;
+    --color-1000: #151619;
+    --color-orange: #
+
+
+    /* FONTS */
+    --font-roboto-light: "Roboto-Light";
+    --font-roboto-med: "Roboto-Medium";
+    --font-roboto-reg: "Roboto-Regular";
+    --font-roboto-mono-reg: "RobotoMono-Regular";
+    --font-roboto-slab-bold: "RobotoSlab-Bold";
+    --font-roboto-slab-light: "RobotoSlab-Light";
+    --font-roboto-slab-reg: "RobotoSlab-Regular";
+}
+
+/* TEXT STYLES */
+.text-style-body {
+    font-family: var(--font-roboto-light);
+    font-size: 13px;
+}
+
+.text-style-heading-m {
+    font-family: var(--font-roboto-reg);
+    font-size: 15px;
+}
+
+.text-style-heading-s {
+    font-family: var(--font-roboto-med);
+    font-size: 14px;
+    text-indent: 1px;
+    letter-spacing: 2px;
+}
+
+.text-style-markdown-code {
+    font-family: var(--font-roboto-mono-reg);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.text-style-preview-h1 {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 32px;
+}
+
+.text-style-preview-h2 {
+    font-family: var(--font-roboto-slab-light);
+    font-size: 28px;
+}
+
+.text-style-preview-h3 {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 24px;
+}
+
+.text-style-preview-h4 {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 20px;
+}
+
+.text-style-preview-h5 {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 16px;
+}
+
+.text-style-preview-h6 {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 14px;
+}
+
+.text-style-preview-paragraph {
+    font-family: var(--font-roboto-slab-reg);
+    font-size: 14px;
+}
+
+.text-style-preview-paragraph-bold {
+    font-family: var(--font-roboto-slab-bold);
+    font-size: 24px;
+    line-height: 24px;
+}
