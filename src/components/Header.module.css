@@ -1,0 +1,73 @@
+
+
+.headerWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-100);
+    background-color: var(--color-800);
+    
+    > .leftSide {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+
+        > .menuButton {
+            width: 56px;
+            height: 56px;
+            border-style: none;
+            background-color: var(--color-700);
+
+            > svg {
+                width: 23px;
+                height: 14px;
+            }
+        }
+
+        > .documentBox {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            > .documentIcon {
+                width: 14px;
+                height: 16px;
+            }
+        }
+        
+        > .logoBox {
+            background-color: var(--color-1000);
+        }        
+    }
+
+    > .rightSide {
+        display: flex;
+        gap: 1.5rem;
+
+        > .deleteButton {
+            border-style: none;
+            background-color: transparent;
+
+            > .deleteIcon {
+                width: 18px;
+                height: 20px;
+            }
+        }
+
+        > .saveButton {
+            width: 40px;
+            height: 40px;
+            border-style: none;
+            border-radius: 4px;
+            margin-right: 8px;
+            background-color: var(--color-orange);
+
+            > .saveIcon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+

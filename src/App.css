@@ -46,7 +46,8 @@
     --color-800: #2B2D31;
     --color-900: #1D1F22;
     --color-1000: #151619;
-    --color-orange: #
+    --color-orange: #E46643;
+    --color-orange-hover: #F39765;
 
 
     /* FONTS */
@@ -57,6 +58,14 @@
     --font-roboto-slab-bold: "RobotoSlab-Bold";
     --font-roboto-slab-light: "RobotoSlab-Light";
     --font-roboto-slab-reg: "RobotoSlab-Regular";
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* TEXT STYLES */
