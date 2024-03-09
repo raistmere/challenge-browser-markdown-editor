@@ -33,6 +33,12 @@
     src: url(./assets/fonts/RobotoSlab-Regular.ttf);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
 
     /* COLORS */
@@ -58,15 +64,35 @@
     --font-roboto-slab-bold: "RobotoSlab-Bold";
     --font-roboto-slab-light: "RobotoSlab-Light";
     --font-roboto-slab-reg: "RobotoSlab-Regular";
-
-
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* MOBILE */
+#APP {
+
+    > main {
+        display: grid;
+        grid-template-columns: 1fr;
+        
+        > #EDITOR {
+            grid-column: 1/-1;
+            grid-row: 1/-1;
+        }
+    }
 }
+
+/* TABLETS */
+@media screen and (min-width: 768px) {
+    
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+    
+}
+
+
+
+/* UTILITY CLASSES */
 
 /* TEXT STYLES */
 .text-style-body {
@@ -80,9 +106,8 @@
 }
 
 .text-style-heading-s {
-    font-family: var(--font-roboto-med);
+    font-family: var(--font-roboto-reg);
     font-size: 14px;
-    text-indent: 1px;
     letter-spacing: 2px;
 }
 

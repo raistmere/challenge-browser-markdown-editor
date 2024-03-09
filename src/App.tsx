@@ -1,12 +1,21 @@
-import './App.css'
-import Header from "./components/Header.tsx";
+import './App.css';
+import Header from "./components/Header/Header.tsx";
+import Editor from "./components/Editor/Editor.tsx";
 
 function App() {
 
   return (
-    <header>
-      <Header />
-    </header>
+    <div id="APP">
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Editor />
+      </main>
+      <footer>
+
+      </footer>
+    </div>
   )
 }
 
