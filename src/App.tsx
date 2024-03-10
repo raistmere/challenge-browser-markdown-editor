@@ -1,6 +1,7 @@
 import './App.css';
 import Header from "./components/Header/Header.tsx";
 import Editor from "./components/Editor/Editor.tsx";
+import Preview from "./components/Preview/Preview.tsx";
 
 function App() {
 
@@ -10,10 +11,10 @@ function App() {
         <Header />
       </header>
       <main>
-        <Editor />
+        {/* <Editor /> */}
+        <Preview />
       </main>
       <footer>
-
       </footer>
     </div>
   )
