@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
     return (
-        <div className={styles.headerWrapper}>
+        <div id="HEADER" className={styles.headerWrapper}>
             <div className={styles.leftSide}>
                 <button className={styles.menuButton}>
                     <svg viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg">

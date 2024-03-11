@@ -29,9 +29,6 @@ const Editor = () => {
             <main>
                 <textarea className="text-style-markdown-code" defaultValue={MARKDOWN_EXAMPLE}/>
             </main>
-            <footer>
-
-            </footer>
         </section>
     )
 }

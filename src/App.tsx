@@ -1,21 +1,22 @@
 import './App.css';
-import Header from "./components/Header/Header.tsx";
-import Editor from "./components/Editor/Editor.tsx";
-import Preview from "./components/Preview/Preview.tsx";
+import Header from "./components/header/Header.tsx";
+import Editor from "./components/editor/Editor.tsx";
+import Preview from "./components/preview/Preview.tsx";
+import Sidebar from './components/sidebar/Sidebar.tsx';
 
 function App() {
 
   return (
-    <div id="APP">
+    <div id="APP" className='sidebar-open'>
+      {/* Sidebar will push everything to the right when it is open */}
+      <Sidebar />
       <header>
         <Header />
       </header>
       <main>
-        {/* <Editor /> */}
-        <Preview />
+        <Editor />
+        {/* <Preview /> */}
       </main>
-      <footer>
-      </footer>
     </div>
   )
 }
