@@ -24,6 +24,7 @@
     }
 
     > main {
+        flex: 1;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -68,5 +69,49 @@
                 }
             }
         }
+    }
+
+    > footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        /* Handles theme toggle css styling */
+        > .toggleBox {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            > input[type="checkbox"] {
+                width: 48px;
+                height: 24px;
+                appearance: none;
+                border-radius: 14.5px;
+                background-color: var(--color-600);
+            }
+
+            > input[type="checkbox"]:checked {
+                background-color: var(--color-orange);
+            }
+
+            > span {
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: var(--color-100);
+                
+            }
+
+            > span.themeLight {
+                right: 5px;
+            }
+
+            > span.themeDark {
+                left: 5px;
+            }
+
+        }
+
     }
 }
