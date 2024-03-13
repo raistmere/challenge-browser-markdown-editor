@@ -1,6 +1,6 @@
 
 
-.headerWrapper {
+.wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +39,16 @@
                 width: 14px;
                 height: 16px;
             }
+
+            > .textBox {
+                > p {
+                    display: none;
+                }
+
+                > h2 {
+                    align-self: flex-start;
+                }
+            }
         }
         
         > .logoBox {
@@ -71,6 +81,65 @@
             > .saveIcon {
                 width: 16px;
                 height: 16px;
+            }
+
+            > p {
+                display: none;
+            }
+        }
+    }
+}
+
+/* TABLETS */
+@media screen and (min-width: 768px) {
+    .wrapper {
+
+        > .leftSide {
+
+            > .menuButton {
+                width: 72px;
+                height: 72px;
+
+                > .openMenuIcon {
+                    width: 30px;
+                    height: 18px;
+                }
+            }    
+
+            > .documentBox {
+
+                > .textBox {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3px;
+
+                    > p {
+                        display: block;
+                        color: var(--color-500)
+                    }
+                }
+            }
+        }
+
+        > .rightSide {
+            
+            > .saveButton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 152px;
+                height: 40px;
+
+                > .saveIcon {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                > p {
+                    display: block;
+                    color: var(--color-100);
+                }
             }
         }
     }
