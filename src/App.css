@@ -147,6 +147,14 @@
                 display: block;
                 grid-column: 2/-1;
             }
+
+            /* Modifiers */
+            &.previewActive {
+
+                > #PREVIEW {
+                    grid-column: 1/-1;
+                }
+            }
         }
     }
 }
