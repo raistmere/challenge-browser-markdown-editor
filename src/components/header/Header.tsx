@@ -6,7 +6,7 @@ const Header = () => {
         <div id="HEADER" className={styles.headerWrapper}>
             <div className={styles.leftSide}>
                 {/* We want to only show the correct menu button based on if the menu is open or not */}
-                { false ? /* This checks the isMenuOpen state*/
+                { true ? /* This checks the isMenuOpen state*/
                     <button className={styles.menuButton} aria-label="open menu button">
                         <svg className={styles.openMenuIcon} viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg">
                             <g fill="#FFF" fillRule="evenodd">

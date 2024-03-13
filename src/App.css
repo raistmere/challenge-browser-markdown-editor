@@ -69,47 +69,86 @@
 /* MOBILE */
 #APP {
     height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow-x: hidden; /* This allows us to push all elements to the right without having a weird white space at the bottom */
 
+    > header {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+    }
+    
     > main {
+        grid-column: 1/-1;
+        grid-row: 2/-1;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
         > #EDITOR {
             grid-column: 1/-1;
+            grid-row: 1/-1;
         }
 
         > #PREVIEW {
+            display: none;
             grid-column: 1/-1;
+            grid-row: 1/-1;
+        }
+
+        /* Modifierrs */
+        &.previewActive {
+            
+            > #EDITOR {
+                display: none;
+            }
+
+            > #PREVIEW {
+                display: block;
+            }
         }
     }
-}
 
-#APP.sidebar-open {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr;
-    overflow-x: hidden; /* This allows us to push all elements to the right without having a weird white space at the bottom */
-
-    > #SIDEBAR {
-        grid-column: 1/1;
-        grid-row: 1/-1;
-    }
-
-    > header {
-        grid-column: 2/-1;
-        grid-row: 1/2;
-    }
+    /* Modifiers */
+    &.sidebarActive {
+        grid-template-columns: 250px 1fr;
+        grid-template-rows: auto 1fr;
     
-    > main {
-        grid-column: 2/-1;
-        grid-row: 2/-1;
+        > #SIDEBAR {
+            grid-column: 1/1;
+            grid-row: 1/-1;
+        }
+    
+        > header {
+            grid-column: 2/-1;
+            grid-row: 1/2;
+        }
+        
+        > main {
+            grid-column: 2/-1;
+            grid-row: 2/-1;
+        }
     }
 }
 
 /* TABLETS */
 @media screen and (min-width: 768px) {
-    
+    #APP {
+
+        > main {
+            grid-template-columns: 1fr 1fr;
+
+            > #EDITOR {
+                grid-column: 1/2;
+            }
+
+            > #PREVIEW {
+                display: block;
+                grid-column: 2/-1;
+            }
+        }
+    }
 }
 
 /* DESKTOP */
