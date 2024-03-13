@@ -6,7 +6,7 @@ import Preview from "./components/preview/Preview.tsx";
 import Sidebar from './components/sidebar/Sidebar.tsx';
 
 function App() {
-  const [isSidebar, setIsSidebar] = useState<boolean>(true);
+  const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
 
   return (
