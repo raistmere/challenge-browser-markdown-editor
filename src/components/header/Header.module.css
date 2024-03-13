@@ -19,9 +19,14 @@
             border-style: none;
             background-color: var(--color-700);
 
-            > svg {
+            > .openMenuIcon {
                 width: 23px;
                 height: 14px;
+            }
+
+            > .closeMenuIcon {
+                width: 18px;
+                height: 18px;
             }
         }
 
