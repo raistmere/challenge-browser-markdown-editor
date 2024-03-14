@@ -115,3 +115,16 @@
 
     }
 }
+
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+    .wrapper {
+        
+        > header {
+
+            > .logo {
+                display: none;
+            }
+        }
+    }
+}

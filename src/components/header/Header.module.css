@@ -30,6 +30,14 @@
             }
         }
 
+        > .logoBox {
+            display: none;
+        }
+
+        > .divider {
+            display: none;
+        }
+
         > .documentBox {
             display: flex;
             align-items: center;
@@ -104,8 +112,8 @@
                     width: 30px;
                     height: 18px;
                 }
-            }    
-
+            }
+            
             > .documentBox {
 
                 > .textBox {
@@ -140,6 +148,27 @@
                     display: block;
                     color: var(--color-100);
                 }
+            }
+        }
+    }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+    .wrapper {
+
+        > .leftSide {
+
+            > .logoBox {
+                display: block;
+                background-color: transparent;
+            }
+            
+            > .divider {
+                display: block;
+                width: 1px;
+                height: 40px;
+                background-color: var(--color-600);
             }
         }
     }
