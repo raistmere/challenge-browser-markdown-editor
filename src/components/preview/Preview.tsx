@@ -1,43 +1,20 @@
 import styles from "./Preview.module.css";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+import { useEffect, useState } from "react";
 
 const Preview = () => {
-    const HTML_EXAMPLE = 
-    <>
-        <h1>Welcome to Markdown</h1>
+    const [result, setResult] = useState<string>("");
 
-        <p>Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.</p>
+    const sanitizeHTML = async () => {
+        const HTML_EXAMPLE: string = DOMPurify.sanitize(await marked.parse(`# Welcome to Markdown\n\nMarkdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.\n\n## How to use<script> alert(1); </script>`));
+        console.log(HTML_EXAMPLE);
+        setResult(HTML_EXAMPLE);
+    }
 
-        <h2>How to use this?</h2>
-
-        <ol>
-            <li>Write markdown in the markdown editor window</li>
-            <li>See the rendered markdown in the preview window</li>
-        </ol>
-
-        <h3>Features</h3>
-
-        <ul>
-            <li>Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists</li>
-            <li>Name and save the document to access again later</li>
-            <li>Choose between Light or Dark mode depending on your preference</li>
-        </ul>
-
-        <blockquote>
-            <p>This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this <a href="https://www.markdownguide.org/cheat-sheet/">markdown cheatsheet</a>.</p>
-        </blockquote>
-
-        <h4>Headings</h4>
-
-        <p>To create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You&#39;ll see in this guide that we&#39;ve used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.\n\n</p>
-
-        <h5>Lists</h5>
-
-        <p>You can see examples of ordered and unordered lists above.</p>
-
-        <h6>Code Blocks</h6>
-        
-        <p>This markdown editor allows for inline-code snippets, like this: <code>&lt;p&gt;I&#39;m inline&lt;/p&gt;</code>. It also allows for larger code blocks like this:</p>
-    </>;
+    useEffect(() => {
+        sanitizeHTML();
+    }, [])
 
     return (
         <section id="PREVIEW" className={styles.wrapper} aria-label="preview document">
@@ -48,8 +25,7 @@ const Preview = () => {
                 </svg>
             </header>
             <main>
-                <div className={styles.textBox}>
-                    {HTML_EXAMPLE}
+                <div className={styles.textBox} dangerouslySetInnerHTML={{__html: result}}>
                 </div>
             </main>
             <footer></footer>
