@@ -8,6 +8,12 @@ import Sidebar from './components/sidebar/Sidebar.tsx';
 function App() {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
+  const [markdown, setMarkdown] = useState<string>("# Welcome to Markdown");
+
+  
+  const updateMarkdown = (value: string) => {
+    setMarkdown(value);
+  }
 
   return (
     isSidebar
@@ -17,7 +23,7 @@ function App() {
             <Header />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor />
+            <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
             <Preview />
           </main>
         </div>
@@ -26,7 +32,7 @@ function App() {
             <Header />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor />
+            <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
             <Preview />
           </main>
         </div>
