@@ -1,3 +1,4 @@
+
 .wrapper {
     
     > header {
@@ -18,11 +19,103 @@
         flex-direction: column;
 
         > .textBox {
+            display: flex;
+            flex-direction: column;
             flex: 1;
             width: 100%;
             border-style: none;
-            padding: 1rem;
+            padding: 24px;
+            gap: 20px;
             color: var(--color-700);
+
+            > h1 {
+                font-family: var(--font-roboto-slab-bold);
+                font-size: 32px;
+            }
+
+            > h2 {
+                font-family: var(--font-roboto-slab-light);
+                font-size: 28px;
+                color: var(--color-700);
+            }
+
+            > h3 {
+                font-family: var(--font-roboto-slab-bold);
+                font-size: 24px; 
+            }
+
+            > h4 {
+                font-family: var(--font-roboto-slab-bold);
+                font-size: 20px;
+            }
+
+            > h5 {
+                font-family: var(--font-roboto-slab-bold);
+                font-size: 16px;
+            }
+
+            > h6 {
+                font-family: var(--font-roboto-slab-bold);
+                font-size: 14px;
+                color: var(--color-orange);
+            }
+
+            > p {
+                font-family: var(--font-roboto-slab-reg);
+                font-size: 14px;
+                color: var(--color-500);
+            }
+
+            > ol, ul {
+                padding-left: 47px;
+
+
+                > li {
+                    font-family: var(--font-roboto-slab-reg);
+                    font-size: 14px;
+                    color: var(--color-500);
+                }
+            }
+
+            > ul {
+                
+                > li::marker {
+                    font-size: 9px;
+                    color: var(--color-orange);
+                }
+            }
+
+            > blockquote {
+                padding: 24px;
+                color: var(--color-1000);
+                border-left-style: solid;
+                border-left-color: var(--color-orange);
+                border-left-width: 4px;
+                border-radius: 4px;
+                background-color: var(--color-200);
+
+                > p {
+                    font-family: var(--font-roboto-slab-bold);
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: var(--color-1000);
+                    
+                    > a:visited {
+                        text-decoration: none;
+                        color: var(--color-1000);
+                    }
+                }
+            }
+
+            > pre {
+                font-family: var(--font-roboto-mono-reg);
+                font-size: 14px;
+                line-height: 24px;
+                padding: 24px;
+                color: var(--color-1000);
+                border-radius: 4px;
+                background-color: var(--color-200);
+            }
         }
     }
 }
