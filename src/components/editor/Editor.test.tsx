@@ -6,7 +6,6 @@ import Editor from "./Editor.tsx";
 let mock_markdown: string = "# Welcome to Markdown";
 
 const mock_updateMarkdown = (value: string) => {
-    console.log(value);
     mock_markdown = value;
 }
 
@@ -22,7 +21,7 @@ describe("Editor.tsx", () => {
         expect(editorTextarea.textContent).toBe("# Welcome to Markdown");
     })
     
-    test("Check if markdown gets updated", async () => {
+    test("Check if markdown gets updated correctly", async () => {
         // Act
         await user.type(editorTextarea, "!"); // Simple add to the markdown to make sure we are changing it.
         // Assert

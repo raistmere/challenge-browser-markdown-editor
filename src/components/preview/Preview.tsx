@@ -3,17 +3,22 @@ import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { useEffect, useState } from "react";
 
-const Preview = () => {
-    const [result, setResult] = useState<string>("");
+type Props = {
+    markdown: string,
+}
 
-    const sanitizeHTML = async () => {
-        const HTML_EXAMPLE: string = DOMPurify.sanitize(await marked.parse("# Welcome to Markdown\n\nMarkdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.\n\n## How to use this?\n\n1. Write markdown in the markdown editor window\n2. See the rendered markdown in the preview window\n\n### Features\n\n- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists\n- Name and save the document to access again later\n- Choose between Light or Dark mode depending on your preference\n\n> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).\n\n#### Headings\n\nTo create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.\n\n##### Lists\n\nYou can see examples of ordered and unordered lists above.\n\n###### Code Blocks\n\nThis markdown editor allows for inline-code snippets, like this: `<p>I'm inline</p>`. It also allows for larger code blocks like this:\n\n```\n<main>\n  <h1>This is a larger code block</h1>\n</main>\n```"));
-        setResult(HTML_EXAMPLE);
+const Preview = (props: Props) => {
+    // We probably don't need to have this state but that can be cleaned up when we refactor the code. For now it works.
+    const [cleanHTML, setCleanHTML] = useState<string>("<h1>ERROR: Markdown not found</h1>");
+    
+
+    const sanitizeHTML = async (markdown: string) => {
+        setCleanHTML(DOMPurify.sanitize(await marked.parse(markdown)));
     }
 
     useEffect(() => {
-        sanitizeHTML();
-    }, [])
+        sanitizeHTML(props.markdown);
+    }, [props.markdown])
 
     return (
         <section id="PREVIEW" className={styles.wrapper} aria-label="preview document">
@@ -24,7 +29,7 @@ const Preview = () => {
                 </svg>
             </header>
             <main>
-                <div className={styles.textBox} dangerouslySetInnerHTML={{__html: result}}></div>
+                <p className={styles.previewMarkdown} aria-label="preview markdown"  dangerouslySetInnerHTML={{__html: cleanHTML}}></p>
             </main>
             <footer></footer>
         </section>

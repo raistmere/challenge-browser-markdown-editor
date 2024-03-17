@@ -24,7 +24,7 @@ function App() {
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
-            <Preview />
+            <Preview markdown={markdown}/>
           </main>
         </div>
       : <div id="APP">
@@ -33,7 +33,7 @@ function App() {
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
-            <Preview />
+            <Preview markdown={markdown}/>
           </main>
         </div>
   )
