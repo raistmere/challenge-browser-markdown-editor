@@ -15,7 +15,7 @@ const Editor = (props: Props) => {
                 </svg>
             </header>
             <main>
-                <textarea className="text-style-markdown-code" defaultValue={props.markdown} aria-label="edit markdown text"/>
+                <textarea className="text-style-markdown-code" aria-label="edit markdown text" defaultValue={props.markdown} onInput={(e) => props.updateMarkdown(e.currentTarget.value)} />
             </main>
         </section>
     )
