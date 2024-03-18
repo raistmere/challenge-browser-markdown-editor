@@ -3,16 +3,16 @@ import styles from "./Header.module.css";
 type Props =  {
     isSidebar: boolean,
     openSidebar: Function,
-    // closeSidebar: Function
+    closeSidebar: Function
 }
 
 const Header = (props: Props) => {
     return (
         <div id="HEADER" className={styles.wrapper}>
             <div className={styles.leftSide}>
-                { props.isSidebar/* This checks the isSidebar state*/
+                { props.isSidebar /* This checks the isSidebar state*/
 
-                    ?   <button className={styles.menuButton} aria-label="close sidebar button">
+                    ?   <button className={styles.menuButton} aria-label="close sidebar button" onClick={() => props.closeSidebar()}>
                         <svg className={styles.closeMenuIcon} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <g fill="#FFF" fillRule="evenodd"><path d="M2.1.686 23.315 21.9l-1.415 1.415L.686 2.1z"/>
                                 <path d="M.686 21.9 21.9.685l1.415 1.415L2.1 23.314z"/>

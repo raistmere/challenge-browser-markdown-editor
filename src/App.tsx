@@ -21,6 +21,11 @@ function App() {
     setIsSidebar(true);
   }
 
+  const closeSideBar = () => {
+    setIsSidebar(false);
+  }
+
+
   useEffect(() => {
 
   },[])
@@ -30,7 +35,7 @@ function App() {
       ? <div id="APP" className='sidebarActive'>
           <Sidebar />
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
@@ -39,7 +44,7 @@ function App() {
         </div>
       : <div id="APP">
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
