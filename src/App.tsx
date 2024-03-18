@@ -4,12 +4,13 @@ import Header from "./components/header/Header.tsx";
 import Editor from "./components/editor/Editor.tsx";
 import Preview from "./components/preview/Preview.tsx";
 import Sidebar from './components/sidebar/Sidebar.tsx';
-import data from "../../../data.json" // This data will be used as a default data set if there is none that exists in local storage
+import myDocumentsDefault from "../data.json" // This data will be used as a default data set if there is none that exists in local storage
 
 
 function App() {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
+  const [myDocuments, setMyDocuments] = useState<Array<{id:string, createdAt:string, name:string, content:string}>>(myDocumentsDefault);
   const [markdown, setMarkdown] = useState<string>("# Welcome to Markdown");
   
   const updateMarkdown = (value: string) => {
@@ -17,7 +18,6 @@ function App() {
   }
 
   const openSidebar = () => {
-    console.log("Open Sidebar");
     setIsSidebar(true);
   }
 
@@ -25,15 +25,21 @@ function App() {
     setIsSidebar(false);
   }
 
+  // const getMyDocuments = () => {
+  //   // We want to check if local storage save exists, if so we will use myDocuments from local storage rather than the default.
+  //   if(localStorage.getItem("myDocuments") !== null) return localStorage.getItem("myDocuments");
+  //   // If it does not have a local storage then we want to create a new local storage save using the default data.
+    
+  // }
+
 
   useEffect(() => {
-
   },[])
 
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
-          <Sidebar />
+          <Sidebar myDocuments={myDocuments}/>
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
           </header>
