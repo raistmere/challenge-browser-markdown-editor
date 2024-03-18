@@ -1,21 +1,25 @@
 import styles from "./Header.module.css";
 
+type Props =  {
+    isSidebar: boolean,
+    openSidebar: Function,
+    // closeSidebar: Function
+}
 
-const Header = () => {
+const Header = (props: Props) => {
     return (
         <div id="HEADER" className={styles.wrapper}>
             <div className={styles.leftSide}>
-                {/* We want to only show the correct menu button based on if the menu is open or not */}
-                { false/* This checks the isSidebar state*/
+                { props.isSidebar/* This checks the isSidebar state*/
 
-                    ?   <button className={styles.menuButton} aria-label="close menu button">
+                    ?   <button className={styles.menuButton} aria-label="close sidebar button">
                         <svg className={styles.closeMenuIcon} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <g fill="#FFF" fill-rule="evenodd"><path d="M2.1.686 23.315 21.9l-1.415 1.415L.686 2.1z"/>
+                            <g fill="#FFF" fillRule="evenodd"><path d="M2.1.686 23.315 21.9l-1.415 1.415L.686 2.1z"/>
                                 <path d="M.686 21.9 21.9.685l1.415 1.415L2.1 23.314z"/>
                             </g>
                         </svg>
                         </button>
-                    :   <button className={styles.menuButton} aria-label="open menu button">
+                    :   <button className={styles.menuButton} aria-label="open sidebar button" onClick={() => props.openSidebar()}>
                             <svg className={styles.openMenuIcon} viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg">
                                 <g fill="#FFF" fillRule="evenodd">
                                     <path d="M0 0h30v2H0zM0 8h30v2H0zM0 16h30v2H0z"/>

@@ -1,7 +1,7 @@
-import styles from "./Preview.module.css";
+import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
-import { useEffect, useState } from "react";
+import styles from "./Preview.module.css";
 
 type Props = {
     markdown: string,
