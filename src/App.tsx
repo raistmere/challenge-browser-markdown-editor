@@ -33,14 +33,9 @@ function App() {
   // }
 
   const openDocument = (id: string) => {
-    console.log(id);
     let content = (myDocuments.find((element) => element.id === id))?.content;
     if(content || content === "") setMarkdown(content); // Blank content ("") won't load so I have to check for blanks.
   }
-
-
-  useEffect(() => {
-  },[])
 
   return (
     isSidebar
