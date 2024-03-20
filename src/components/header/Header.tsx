@@ -3,7 +3,8 @@ import styles from "./Header.module.css";
 type Props =  {
     isSidebar: boolean,
     openSidebar: Function,
-    closeSidebar: Function
+    closeSidebar: Function,
+    documentName: string,
 }
 
 const Header = (props: Props) => {
@@ -41,7 +42,7 @@ const Header = (props: Props) => {
                     <div className={styles.textBox}>
                         <p className="text-style-body-m">Document Name</p>
                         <h2 className={`text-style-heading-m ${styles.documentName}`}>
-                            welcome.md
+                            {props.documentName}
                         </h2>
                     </div>
                 </div>

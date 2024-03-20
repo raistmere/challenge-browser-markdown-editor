@@ -11,6 +11,7 @@ function App() {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [myDocuments, setMyDocuments] = useState<Array<{id:string, createdAt:string, name:string, content:string}>>(myDocumentsDefault);
+  const [currentDocument, setCurrentDocument] = useState<{id:string, createdAt:string, name:string, content:string}>(myDocumentsDefault[0]);
   const [markdown, setMarkdown] = useState<string>("# Welcome to Markdown");
   
   const updateMarkdown = (value: string) => {
@@ -33,8 +34,12 @@ function App() {
   // }
 
   const openDocument = (id: string) => {
-    let content = (myDocuments.find((element) => element.id === id))?.content;
-    if(content || content === "") setMarkdown(content); // Blank content ("") won't load so I have to check for blanks.
+    let document = (myDocuments.find((element) => element.id === id));
+
+    if(document?.content || document?.content === "") {
+      setMarkdown(document.content); // Blank content ("") won't load so I have to check for blanks.
+      setCurrentDocument(document);
+    }
   }
 
   return (
@@ -42,7 +47,7 @@ function App() {
       ? <div id="APP" className='sidebarActive'>
           <Sidebar myDocuments={myDocuments} openDocument={openDocument}/>
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
@@ -51,7 +56,7 @@ function App() {
         </div>
       : <div id="APP">
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
