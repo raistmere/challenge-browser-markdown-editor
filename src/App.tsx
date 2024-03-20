@@ -32,6 +32,12 @@ function App() {
     
   // }
 
+  const openDocument = (id: string) => {
+    console.log(id);
+    let content = (myDocuments.find((element) => element.id === id))?.content;
+    if(content || content === "") setMarkdown(content); // Blank content ("") won't load so I have to check for blanks.
+  }
+
 
   useEffect(() => {
   },[])
@@ -39,7 +45,7 @@ function App() {
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
-          <Sidebar myDocuments={myDocuments}/>
+          <Sidebar myDocuments={myDocuments} openDocument={openDocument}/>
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar}/>
           </header>

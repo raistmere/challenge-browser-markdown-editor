@@ -3,7 +3,6 @@ import { describe, expect, test } from "vitest";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
-
 describe("Sidebar Functionality", () => {
     // Arrange
     const ren = render(<App />);
@@ -18,6 +17,15 @@ describe("Sidebar Functionality", () => {
         expect(ren.queryByRole("heading", {name: "MY DOCUMENTS"})).not.toBeNull();
     })
     
+    test("Check if we can open a document to screen", async () => {
+        // Arrange
+        const documentButton = ren.getByRole("button", {name:`open welcome.md`});
+        // Act
+        user.click(documentButton);
+        // Assert
+        expect(await ren.findByRole("heading", {name:"Welcome to Markdown"})).not.toBeNull();
+    });
+    
     test("check if we can close sidebar", async () => {
         // Arrange
         const closeSidebarButton = ren.getByRole("button", {name:"close sidebar button"});
@@ -26,4 +34,5 @@ describe("Sidebar Functionality", () => {
         // Assert
         expect(ren.queryByRole("heading", {name: "MY DOCUMENTS"})).toBeNull();
     })
+
 })
