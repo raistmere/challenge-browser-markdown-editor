@@ -7,24 +7,32 @@ import Sidebar from './components/sidebar/Sidebar.tsx';
 import myDocumentsDefault from "../data.json" // This data will be used as a default data set if there is none that exists in local storage
 
 
+type Document = {
+  id:string,
+  createdAt:string,
+  name:string,
+  content:string
+};
+
+
 function App() {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
-  const [myDocuments, setMyDocuments] = useState<Array<{id:string, createdAt:string, name:string, content:string}>>(myDocumentsDefault);
-  const [currentDocument, setCurrentDocument] = useState<{id:string, createdAt:string, name:string, content:string}>(myDocumentsDefault[0]);
+  const [myDocuments, setMyDocuments] = useState<Array<Document>>(myDocumentsDefault);
+  const [currentDocument, setCurrentDocument] = useState<Document>(myDocumentsDefault[0]);
   const [markdown, setMarkdown] = useState<string>("# Welcome to Markdown");
   
   const updateMarkdown = (value: string) => {
     setMarkdown(value);
-  }
+  };
 
   const openSidebar = () => {
     setIsSidebar(true);
-  }
+  };
 
   const closeSideBar = () => {
     setIsSidebar(false);
-  }
+  };
 
   // const getMyDocuments = () => {
   //   // We want to check if local storage save exists, if so we will use myDocuments from local storage rather than the default.
@@ -40,12 +48,18 @@ function App() {
       setMarkdown(document.content); // Blank content ("") won't load so I have to check for blanks.
       setCurrentDocument(document);
     }
-  }
+  };
+
+  const createNewDocument = () => {
+    console.log("Created new document");
+    let newDocument:Document = {id:(crypto.randomUUID).toString(), createdAt: "00-00-0000", name:"new-document.md", content:""};
+    setMyDocuments((prev) => [...prev, newDocument]);
+  };
 
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
-          <Sidebar myDocuments={myDocuments} openDocument={openDocument}/>
+          <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name}/>
           </header>
@@ -66,4 +80,4 @@ function App() {
   )
 };
 
-export default App
+export default App;

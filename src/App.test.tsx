@@ -25,6 +25,15 @@ describe("Sidebar Functionality", () => {
         // Assert
         expect(await ren.findByRole("heading", {name:"Welcome to Markdown"})).not.toBeNull();
     });
+
+    test("Check if we can create a new document", async () => {
+        // Arrange
+        const newDocumentButton = ren.getByRole("button", {name:"+ New Document"})
+        // Act
+        await user.click(newDocumentButton);
+        // Assert
+        expect(ren.queryByRole("heading", {name: "new-document.md"})).not.toBeNull();
+    })
     
     test("check if we can close sidebar", async () => {
         // Arrange

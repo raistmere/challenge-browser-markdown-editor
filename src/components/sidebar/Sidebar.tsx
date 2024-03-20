@@ -3,7 +3,8 @@ import styles from "./Sidebar.module.css";
 
 type Props = {
     myDocuments: Array<{id:string, createdAt:string, name:string, content:string}>,
-    openDocument: Function;
+    openDocument: Function,
+    createNewDocument: Function
 }
 const Sidebar = (props: Props) => {
 
@@ -38,7 +39,7 @@ const Sidebar = (props: Props) => {
                 <h2 className="text-style-heading-s">MY DOCUMENTS</h2>
             </header>
             <main>
-                <button className={`text-style-heading-m ${styles.newDocumentButton}`} aria-label="create new document">
+                <button className={`text-style-heading-m ${styles.newDocumentButton}`} onClick={() => props.createNewDocument()}>
                     + New Document
                 </button>
                 <div className={styles.documentListContainer}>
