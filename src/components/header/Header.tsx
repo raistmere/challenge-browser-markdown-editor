@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Header.module.css";
 
 type Props =  {
@@ -8,6 +9,8 @@ type Props =  {
 }
 
 const Header = (props: Props) => {
+    const [isEditDocumentName, setIsEditDocumentName] = useState<boolean>(false);
+
     return (
         <div id="HEADER" className={styles.wrapper}>
             <div className={styles.leftSide}>
@@ -41,9 +44,17 @@ const Header = (props: Props) => {
                     </svg>
                     <div className={styles.textBox}>
                         <p className="text-style-body-m">Document Name</p>
-                        <h2 className={`text-style-heading-m ${styles.documentName}`}>
-                            {props.documentName}
-                        </h2>
+                        {isEditDocumentName
+                            ? <>
+                                <form>
+                                    <label htmlFor="documentName"  hidden={true}>document name</label>
+                                    <input type="text" name="documentName" id="documentName" defaultValue={props.documentName} autoFocus={true} onBlur={() => setIsEditDocumentName(false)}/>
+                                </form>
+                              </> 
+                            : <button className={`text-style-heading-m ${styles.documentName}`} aria-label="edit document name" onClick={() => setIsEditDocumentName(true)}>
+                                {props.documentName}
+                              </button>
+                        }
                     </div>
                 </div>
             </div>
