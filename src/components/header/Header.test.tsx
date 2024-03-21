@@ -9,7 +9,7 @@ import Header from "./Header";
 
 test("Check if we can edit document name", async () => {
     // Arrange
-    const ren = render(<Header isSidebar={false} openSidebar={() => console.log("open sidebar")} closeSidebar={() => console.log("close sidebar")} documentName="document-01.md" />);
+    const ren = render(<Header isSidebar={false} openSidebar={() => console.log("open sidebar")} closeSidebar={() => console.log("close sidebar")} documentName="document-01.md" changeDocumentName={() => console.log("Changing document name")}/>);
     const user = userEvent.setup();
     const documentNameButton = ren.getByRole("button", {name:"edit document name"});
     // Act

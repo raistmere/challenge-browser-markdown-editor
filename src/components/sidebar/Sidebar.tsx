@@ -19,8 +19,8 @@ const Sidebar = (props: Props) => {
                     </svg>
                     <div className={styles.textBox}>
                         <p className="text-style-body-m">{document.createdAt}</p>
-                        <button className={styles.openDocumentButton} aria-label={`open ${document.name}`} onClick={() => props.openDocument(document.id)}>
-                            <h3 className="text-style-heading-m">{document.name}</h3>
+                        <button className={`text-style-heading-m ${styles.openDocumentButton}`} aria-label={`open ${document.name}`} onClick={() => props.openDocument(document.id)}>
+                            {document.name}
                         </button>
                     </div>
                 </div>

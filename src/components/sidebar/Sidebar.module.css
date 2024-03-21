@@ -62,9 +62,15 @@
                     > p {
                         color: var(--color-500);
                     }
-    
-                    > h3 {
+
+                    > button {
                         color: var(--color-100);
+                        background-color: transparent;
+                        border-style: none;
+
+                        &:hover {
+                            color: var(--color-orange);
+                        }
                     }
                 }
             }
