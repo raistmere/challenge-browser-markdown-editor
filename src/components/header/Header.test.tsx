@@ -16,4 +16,4 @@ test("Check if we can edit document name", async () => {
     await user.click(documentNameButton);
     // Assert
     expect(await ren.findByLabelText("document name")).not.toBeNull();
-})
+});

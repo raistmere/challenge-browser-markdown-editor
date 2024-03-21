@@ -3,10 +3,11 @@ import { describe, expect, test } from "vitest";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
+// Arrange
+const ren = render(<App />);
+const user = userEvent.setup();
+
 describe("Sidebar Functionality", () => {
-    // Arrange
-    const ren = render(<App />);
-    const user = userEvent.setup();
     
     test("Check if we can open sidebar", async () => {
         // Arrange
@@ -15,7 +16,7 @@ describe("Sidebar Functionality", () => {
         await user.click(openSidebarButton);
         // Assert
         expect(ren.queryByRole("heading", {name: "MY DOCUMENTS"})).not.toBeNull();
-    })
+    });
     
     test("Check if we can open a document to screen", async () => {
         // Arrange
@@ -33,7 +34,7 @@ describe("Sidebar Functionality", () => {
         await user.click(newDocumentButton);
         // Assert
         expect(ren.queryByRole("heading", {name: "new-document.md"})).not.toBeNull();
-    })
+    });
     
     test("check if we can close sidebar", async () => {
         // Arrange
@@ -42,6 +43,23 @@ describe("Sidebar Functionality", () => {
         await user.click(closeSidebarButton);
         // Assert
         expect(ren.queryByRole("heading", {name: "MY DOCUMENTS"})).toBeNull();
-    })
+    });
+});
 
-})
+// NOTE:
+//  I got the functionality for changing the document name to work but for some reason I can't
+// get the integration test to work properly. I think I messed up how vitest works and will look at it later. 
+
+// describe("Header Functionality", () => {
+    
+//     test("Check if changing the document name updates correctly", async () => {
+//         // // Arrange
+//         const documentNameButton = ren.getByRole("button", {name:"edit document name"});
+//         // // Act
+//         await user.click(documentNameButton);
+//         const documentNameInput = ren.getByLabelText("document name");
+//         userEvent.type(documentNameInput, "abc{enter}");
+//         // Assert
+//         expect(documentNameButton.textContent).toBe("welcome");
+//     });
+// })

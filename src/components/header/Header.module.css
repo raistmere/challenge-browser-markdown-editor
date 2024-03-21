@@ -53,8 +53,28 @@
                     display: none;
                 }
 
-                > h2 {
+                > form {
+                    > input {
+                        background-color: transparent;
+                        color: var(--color-100);
+                        padding-bottom: 5px;
+                        
+                        &:focus {
+                            border-style: none;
+                            border-bottom-style: solid;
+                            border-width: 1px;
+                            border-color: var(--color-100);
+                            outline: none;
+                            caret-color: var(--color-orange);
+                        }
+                    }
+                }
+
+                > button {
                     align-self: flex-start;
+                    background-color: transparent;
+                    border-style: none;
+                    color: var(--color-100);
                 }
             }
         }

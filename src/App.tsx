@@ -51,17 +51,33 @@ function App() {
   };
 
   const createNewDocument = () => {
-    console.log("Created new document");
     let newDocument:Document = {id:(crypto.randomUUID).toString(), createdAt: "00-00-0000", name:"new-document.md", content:""};
     setMyDocuments((prev) => [...prev, newDocument]);
   };
+
+  const changeDocumentName = (value: string) => {
+    let updateDocument: Document = currentDocument;
+    let newMyDocuments: Document[] = [];
+    updateDocument.name = value;
+    myDocuments.forEach((document) => {
+      if(document.id === updateDocument.id) {
+        newMyDocuments.push(updateDocument);
+      }
+      else {
+        newMyDocuments.push(document);
+      }
+      
+    });
+
+    setMyDocuments(newMyDocuments);
+  }
 
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
           <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} changeDocumentName={changeDocumentName}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
@@ -70,7 +86,7 @@ function App() {
         </div>
       : <div id="APP">
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} changeDocumentName={changeDocumentName}/>
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>

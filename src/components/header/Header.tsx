@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, FormEventHandler, ReactElement, useState } from "react";
 import styles from "./Header.module.css";
 
 type Props =  {
@@ -6,10 +6,19 @@ type Props =  {
     openSidebar: Function,
     closeSidebar: Function,
     documentName: string,
+    changeDocumentName: Function
 }
 
 const Header = (props: Props) => {
     const [isEditDocumentName, setIsEditDocumentName] = useState<boolean>(false);
+
+
+    const updateDocumentName = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); 
+        let data = new FormData(e.currentTarget);
+        props.changeDocumentName(data.get("documentName"));
+        setIsEditDocumentName(false);
+    }
 
     return (
         <div id="HEADER" className={styles.wrapper}>
@@ -46,14 +55,19 @@ const Header = (props: Props) => {
                         <p className="text-style-body-m">Document Name</p>
                         {isEditDocumentName
                             ? <>
-                                <form>
-                                    <label htmlFor="documentName"  hidden={true}>document name</label>
-                                    <input type="text" name="documentName" id="documentName" defaultValue={props.documentName} autoFocus={true} onBlur={() => setIsEditDocumentName(false)}/>
+                                <form onSubmit={(e: FormEvent<HTMLFormElement>) => updateDocumentName(e)}>
+                                    <label htmlFor="documentName" hidden={true}>document name</label>
+                                    <input type="text" name="documentName" id="documentName" className="text-style-heading-m" aria-label="edit document name" 
+                                        defaultValue={props.documentName} 
+                                        autoFocus={true} 
+                                        onBlur={() => setIsEditDocumentName(false)}
+                                    />
                                 </form>
                               </> 
-                            : <button className={`text-style-heading-m ${styles.documentName}`} aria-label="edit document name" onClick={() => setIsEditDocumentName(true)}>
-                                {props.documentName}
-                              </button>
+                            :   <button className={`text-style-heading-m ${styles.documentName}`} aria-label="edit document name" 
+                                    onClick={() => setIsEditDocumentName(true)}> 
+                                        {props.documentName} 
+                                </button>
                         }
                     </div>
                 </div>
