@@ -20,12 +20,7 @@ function App() {
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [myDocuments, setMyDocuments] = useState<Array<Document>>(myDocumentsDefault);
   const [currentDocument, setCurrentDocument] = useState<Document>(myDocumentsDefault[0]);
-  const [markdown, setMarkdown] = useState<string>("# Welcome to Markdown");
   
-  const updateMarkdown = (value: string) => {
-    setMarkdown(value);
-  };
-
   const openSidebar = () => {
     setIsSidebar(true);
   };
@@ -41,24 +36,39 @@ function App() {
     
   // }
 
+  // This method handles opening a document
   const openDocument = (id: string) => {
     let document = (myDocuments.find((element) => element.id === id));
 
     if(document?.content || document?.content === "") {
-      setMarkdown(document.content); // Blank content ("") won't load so I have to check for blanks.
       setCurrentDocument(document);
     }
   };
 
+  // This method handles creating a new document and adding it to myDocuments
   const createNewDocument = () => {
     let newDocument:Document = {id:(crypto.randomUUID).toString(), createdAt: "00-00-0000", name:"new-document.md", content:""};
     setMyDocuments((prev) => [...prev, newDocument]);
   };
 
+  // This method handles changing the current document name
   const changeDocumentName = (value: string) => {
+    let updateDocument: Document = {...currentDocument};
+    updateDocument.name = value;
+    setCurrentDocument(updateDocument);
+  }
+
+  // This method handles updating the markdown of the currentDocument
+  const updateMarkdown = (value: string) => {
+    let updateDocument: Document = {...currentDocument};
+    updateDocument.content = value;
+    setCurrentDocument(updateDocument);
+  };
+
+  // This method handles saving the changes that are applied to the currentDocument and updating myDocuments
+  const saveDocumentChanges = () => {
     let updateDocument: Document = currentDocument;
     let newMyDocuments: Document[] = [];
-    updateDocument.name = value;
     myDocuments.forEach((document) => {
       if(document.id === updateDocument.id) {
         newMyDocuments.push(updateDocument);
@@ -72,25 +82,35 @@ function App() {
     setMyDocuments(newMyDocuments);
   }
 
+  // This method handles deleting the currentDocument from myDocuments
+  // If we need a deletDocument by ID then we can make a new method that handles that.
+  const deleteCurrentDocument = () => {
+
+  }
+
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
           <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} changeDocumentName={changeDocumentName}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
+              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges}
+            />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
-            <Preview markdown={markdown}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
+            <Preview markdown={currentDocument.content}/>
           </main>
         </div>
       : <div id="APP">
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} changeDocumentName={changeDocumentName}/>
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
+              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges}
+            />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={markdown} updateMarkdown={updateMarkdown}/>
-            <Preview markdown={markdown}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
+            <Preview markdown={currentDocument.content}/>
           </main>
         </div>
   )

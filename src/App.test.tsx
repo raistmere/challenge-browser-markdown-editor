@@ -33,7 +33,7 @@ describe("Sidebar Functionality", () => {
         // Act
         await user.click(newDocumentButton);
         // Assert
-        expect(ren.queryByRole("heading", {name: "new-document.md"})).not.toBeNull();
+        expect(ren.getByRole("button", {name: "open new-document.md"})).not.toBeNull();
     });
     
     test("check if we can close sidebar", async () => {
@@ -46,20 +46,31 @@ describe("Sidebar Functionality", () => {
     });
 });
 
-// NOTE:
-//  I got the functionality for changing the document name to work but for some reason I can't
-// get the integration test to work properly. I think I messed up how vitest works and will look at it later. 
+
 
 // describe("Header Functionality", () => {
+
+//     // NOTE:
+//     //  I got the functionality for changing the document name to work but for some reason I can't
+//     // get the integration test to work properly. I think I messed up how vitest works and will look at it later. 
     
-//     test("Check if changing the document name updates correctly", async () => {
-//         // // Arrange
-//         const documentNameButton = ren.getByRole("button", {name:"edit document name"});
-//         // // Act
-//         await user.click(documentNameButton);
-//         const documentNameInput = ren.getByLabelText("document name");
-//         userEvent.type(documentNameInput, "abc{enter}");
-//         // Assert
-//         expect(documentNameButton.textContent).toBe("welcome");
-//     });
+//     // test("Check if changing the document name updates correctly", async () => {
+//     //     // // Arrange
+//     //     const documentNameButton = ren.getByRole("button", {name:"edit document name"});
+//     //     // // Act
+//     //     await user.click(documentNameButton);
+//     //     const documentNameInput = ren.getByLabelText("document name");
+//     //     userEvent.type(documentNameInput, "abc{enter}");
+//     //     // Assert
+//     //     expect(documentNameButton.textContent).toBe("welcome");
+//     // });
+
+//     // test("Check if we can save the document", async () => {
+//     //     // Arrange
+//     //     const saveButton:HTMLElement = ren.getByRole("button", {name: /Save change/i});
+//     //     // Act
+//     //     await user.click(saveButton);
+//     //     // Assert
+//     //     expect()
+//     // })
 // })
