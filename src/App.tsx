@@ -20,6 +20,11 @@ function App() {
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [myDocuments, setMyDocuments] = useState<Array<Document>>(myDocumentsDefault);
   const [currentDocument, setCurrentDocument] = useState<Document>(myDocumentsDefault[0]);
+
+  useEffect(() => {
+    getMyDocuments();
+    console.log("Component initial render");
+  }, [])
   
   const openSidebar = () => {
     setIsSidebar(true);
@@ -29,28 +34,16 @@ function App() {
     setIsSidebar(false);
   };
 
-  // const getMyDocuments = () => {
-  //   // We want to check if local storage save exists, if so we will use myDocuments from local storage rather than the default.
-  //   if(localStorage.getItem("myDocuments") !== null) return localStorage.getItem("myDocuments");
-  //   // If it does not have a local storage then we want to create a new local storage save using the default data.
-    
-  // }
-
   // This method handles opening a document
   const openDocument = (id: string) => {
-    let document = (myDocuments.find((element) => element.id === id));
+    let document = (myDocuments?.find((element) => element.id === id));
 
     if(document?.content || document?.content === "") {
       setCurrentDocument(document);
     }
   };
 
-  // This method handles creating a new document and adding it to myDocuments
-  const createNewDocument = () => {
-    let newDocument:Document = {id:(crypto.randomUUID).toString(), createdAt: "00-00-0000", name:"new-document.md", content:""};
-    setMyDocuments((prev) => [...prev, newDocument]);
-  };
-
+  
   // This method handles changing the current document name
   const changeDocumentName = (value: string) => {
     let updateDocument: Document = {...currentDocument};
@@ -63,6 +56,26 @@ function App() {
     let updateDocument: Document = {...currentDocument};
     updateDocument.content = value;
     setCurrentDocument(updateDocument);
+  };
+
+  // Check if there is an existing local storage of myDocuments, if so we want to use that instead of default.
+  const getMyDocuments = () => {
+    let data = localStorage.getItem("myDocuments");
+    if(data !== null && data !== undefined) {
+      setMyDocuments(JSON.parse(data));
+    }
+    else {
+      setMyDocuments(myDocumentsDefault);
+    }
+  }
+  
+  // This method handles creating a new document and adding it to myDocuments
+  const createNewDocument = () => {
+    let newDocument:Document = {id:crypto.randomUUID(), createdAt: "00-00-0000", name:"new-document.md", content:""};
+    let newMyDocuments: Document[] = [];
+    newMyDocuments = [...myDocuments, newDocument];
+    localStorage.setItem("myDocuments", JSON.stringify(newMyDocuments)); // *
+    setMyDocuments(newMyDocuments);
   };
 
   // This method handles saving the changes that are applied to the currentDocument and updating myDocuments
@@ -79,6 +92,7 @@ function App() {
       
     });
 
+    localStorage.setItem("myDocuments", JSON.stringify(newMyDocuments)); //*
     setMyDocuments(newMyDocuments);
   }
 
@@ -86,7 +100,10 @@ function App() {
   // If we need a deletDocument by ID then we can make a new method that handles that.
   const deleteCurrentDocument = () => {
     console.log("Deleting current document");
-    setMyDocuments((prev) => prev.filter((document) => document.id !== currentDocument.id));
+    let newMyDocuments: Document[] = [];
+    newMyDocuments = myDocuments.filter((document) => document.id !== currentDocument.id);
+    localStorage.setItem("myDocuments", JSON.stringify(newMyDocuments)); //*
+    setMyDocuments(newMyDocuments);
   }
 
   return (
