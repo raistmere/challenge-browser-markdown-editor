@@ -85,7 +85,8 @@ function App() {
   // This method handles deleting the currentDocument from myDocuments
   // If we need a deletDocument by ID then we can make a new method that handles that.
   const deleteCurrentDocument = () => {
-
+    console.log("Deleting current document");
+    setMyDocuments((prev) => prev.filter((document) => document.id !== currentDocument.id));
   }
 
   return (
@@ -94,7 +95,7 @@ function App() {
           <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
-              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges}
+              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} deleteCurrentDocument={deleteCurrentDocument}
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
@@ -105,7 +106,7 @@ function App() {
       : <div id="APP">
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
-              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges}
+              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} deleteCurrentDocument={deleteCurrentDocument}
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
