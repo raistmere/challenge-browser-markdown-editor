@@ -4,7 +4,8 @@ import Header from "./components/header/Header.tsx";
 import Editor from "./components/editor/Editor.tsx";
 import Preview from "./components/preview/Preview.tsx";
 import Sidebar from './components/sidebar/Sidebar.tsx';
-import myDocumentsDefault from "../data.json" // This data will be used as a default data set if there is none that exists in local storage
+// This data will be used as a default data set if there is none that exists in local storage
+import myDocumentsDefault from "../data.json" 
 
 
 type Document = {
@@ -33,6 +34,14 @@ function App() {
   const closeSideBar = () => {
     setIsSidebar(false);
   };
+
+  const enablePreview = () => {
+    setIsPreview(true);
+  }
+
+  const disablePreview = () => {
+    setIsPreview(false);
+  }
 
   // This method handles opening a document
   const openDocument = (id: string) => {
@@ -111,24 +120,30 @@ function App() {
       ? <div id="APP" className='sidebarActive'>
           <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
-              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} deleteCurrentDocument={deleteCurrentDocument}
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName=
+              {currentDocument.name} changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} 
+              deleteCurrentDocument={deleteCurrentDocument}
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
-            <Preview markdown={currentDocument.content}/>
+            <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
+              disablePreview={disablePreview}
+            />
           </main>
         </div>
       : <div id="APP">
           <header>
-            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName={currentDocument.name} 
-              changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} deleteCurrentDocument={deleteCurrentDocument}
+            <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName=
+              {currentDocument.name} changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} 
+              deleteCurrentDocument={deleteCurrentDocument}
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
             <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
-            <Preview markdown={currentDocument.content}/>
+            <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
+              disablePreview={disablePreview}
+            />
           </main>
         </div>
   )
