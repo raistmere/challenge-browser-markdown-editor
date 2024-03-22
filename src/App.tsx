@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { format } from "date-fns";
 import Header from "./components/header/Header.tsx";
 import Editor from "./components/editor/Editor.tsx";
 import Preview from "./components/preview/Preview.tsx";
@@ -25,6 +26,8 @@ function App() {
   useEffect(() => {
     getMyDocuments();
     console.log("Component initial render");
+    let currentDate = new Date().toLocaleString('en-us',{day: "numeric", month:'short', year:'numeric'});
+    console.log(currentDate);
   }, [])
   
   const openSidebar = () => {
@@ -80,7 +83,12 @@ function App() {
   
   // This method handles creating a new document and adding it to myDocuments
   const createNewDocument = () => {
-    let newDocument:Document = {id:crypto.randomUUID(), createdAt: "00-00-0000", name:"new-document.md", content:""};
+    let newDocument:Document = {
+      id:crypto.randomUUID(), 
+      createdAt: new Date().toLocaleString('en-us',{day: "numeric", month:'short', year:'numeric'}), 
+      name:"new-document.md", 
+      content:""
+    };
     let newMyDocuments: Document[] = [];
     newMyDocuments = [...myDocuments, newDocument];
     localStorage.setItem("myDocuments", JSON.stringify(newMyDocuments)); // *
