@@ -134,7 +134,7 @@ function App() {
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}/>
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
               disablePreview={disablePreview}
             />
@@ -148,7 +148,7 @@ function App() {
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}/>
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
               disablePreview={disablePreview}
             />

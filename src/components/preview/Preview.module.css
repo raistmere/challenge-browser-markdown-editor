@@ -13,8 +13,6 @@
         }
 
         > button {
-            width: 20px;
-            height: 20px;
             border-style: none;
 
             &:hover {

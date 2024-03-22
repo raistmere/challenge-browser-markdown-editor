@@ -13,6 +13,22 @@
         > h2 {
             color: var(--color-500);
         }
+
+        > button {
+            width: 20px;
+            height: 20px;
+            border-style: none;
+
+            &:hover {
+
+                > svg {
+    
+                    > path {
+                        fill: var(--color-orange);
+                    }
+                }
+            }
+        }
     }
 
     > main {
@@ -35,8 +51,7 @@
     .wrapper {
 
         > header {
-
-            > svg {
+            > button {
                 display: none;
             }
         }
