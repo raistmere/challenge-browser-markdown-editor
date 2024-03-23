@@ -81,6 +81,16 @@
         display: flex;
         align-items: center;
         gap: 10px;
+
+        > svg {
+            
+            &.active {
+                
+                > path {
+                    fill: var(--color-100);
+                }
+            }
+        }
         
         /* Handles theme toggle css styling */
         > .toggleBox {
@@ -94,10 +104,6 @@
                 appearance: none;
                 border-radius: 14.5px;
                 background-color: var(--color-600);
-            }
-
-            > input[type="checkbox"]:checked {
-                background-color: var(--color-orange);
             }
 
             > span {

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { format } from "date-fns";
 import Header from "./components/header/Header.tsx";
 import Editor from "./components/editor/Editor.tsx";
 import Preview from "./components/preview/Preview.tsx";
@@ -20,6 +19,7 @@ type Document = {
 function App() {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);
   const [isPreview, setIsPreview] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode]= useState<boolean>(false);
   const [myDocuments, setMyDocuments] = useState<Array<Document>>(myDocumentsDefault);
   const [currentDocument, setCurrentDocument] = useState<Document>(myDocumentsDefault[0]);
 
@@ -44,6 +44,10 @@ function App() {
 
   const disablePreview = () => {
     setIsPreview(false);
+  }
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
   }
 
   // This method handles opening a document
@@ -126,7 +130,9 @@ function App() {
   return (
     isSidebar
       ? <div id="APP" className='sidebarActive'>
-          <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument}/>
+          <Sidebar myDocuments={myDocuments} openDocument={openDocument} createNewDocument={createNewDocument} 
+            isDarkMode={isDarkMode} toggleTheme={toggleTheme}
+          />
           <header>
             <Header isSidebar={isSidebar} openSidebar={openSidebar} closeSidebar={closeSideBar} documentName=
               {currentDocument.name} changeDocumentName={changeDocumentName} saveDocumentChanges={saveDocumentChanges} 
