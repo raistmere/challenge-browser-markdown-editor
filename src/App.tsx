@@ -144,7 +144,7 @@ function App() {
               isDarkMode={isDarkMode}
             />
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
-              disablePreview={disablePreview}
+              disablePreview={disablePreview} isDarkMode={isDarkMode}
             />
           </main>
         </div>
@@ -160,7 +160,7 @@ function App() {
               isDarkMode={isDarkMode}
             />
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
-              disablePreview={disablePreview}
+              disablePreview={disablePreview} isDarkMode={isDarkMode}
             />
           </main>
         </div>
