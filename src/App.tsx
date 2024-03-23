@@ -140,7 +140,9 @@ function App() {
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}
+              isDarkMode={isDarkMode}
+            />
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
               disablePreview={disablePreview}
             />
@@ -154,7 +156,9 @@ function App() {
             />
           </header>
           <main className={isPreview ? "previewActive" : ""}>
-            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}/>
+            <Editor markdown={currentDocument.content} updateMarkdown={updateMarkdown} enablePreview={enablePreview}
+              isDarkMode={isDarkMode}
+            />
             <Preview markdown={currentDocument.content} isPreview={isPreview} enablePreview={enablePreview} 
               disablePreview={disablePreview}
             />
