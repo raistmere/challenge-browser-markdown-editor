@@ -28,6 +28,10 @@
                 width: 18px;
                 height: 18px;
             }
+
+            &:hover {
+                background-color: var(--color-orange);
+            }
         }
 
         > .logoBox {
@@ -96,6 +100,16 @@
                 width: 18px;
                 height: 20px;
             }
+
+            &:hover {
+
+                > .deleteIcon {
+
+                    > path {
+                        fill: var(--color-orange);
+                    }
+                }
+            }
         }
 
         > .saveButton {
@@ -113,6 +127,10 @@
 
             > p {
                 display: none;
+            }
+
+            &:hover {
+                background-color: var(--color-orange-hover);
             }
         }
     }
