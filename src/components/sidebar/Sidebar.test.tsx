@@ -1,6 +1,5 @@
 import { expect, test } from "vitest";
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Sidebar from "./Sidebar.tsx";
 
 const mock_myDocumentsData : Array<{id:string, createdAt:string, name:string, content:string}> = [
@@ -19,7 +18,11 @@ const mock_myDocumentsData : Array<{id:string, createdAt:string, name:string, co
 ]
 
 // Arrange
-const ren = render(<Sidebar myDocuments={mock_myDocumentsData} openDocument={() => null} createNewDocument={() => console.log("New Document")}/>);
+const ren = render(<Sidebar myDocuments={mock_myDocumentsData} openDocument={() => null} 
+                        createNewDocument={() => console.log("New Document")}
+                        isDarkMode={false}
+                        toggleTheme={() => console.log("Toggle Theme")}
+                    />);
 
 test("Check if My Documents get loaded",() => {
     // Assert

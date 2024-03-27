@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { render } from "@testing-library/react"
-import { userEvent, pointerKey } from "@testing-library/user-event"
+import { userEvent } from "@testing-library/user-event"
 import Editor from "./Editor.tsx";
 
 let mock_markdown: string = "# Welcome to Markdown";
@@ -11,7 +11,7 @@ const mock_updateMarkdown = (value: string) => {
 
 describe("Editor.tsx", () => {
     // Arrange
-    const ren = render(<Editor markdown={mock_markdown} updateMarkdown={mock_updateMarkdown}/>);
+    const ren = render(<Editor markdown={mock_markdown} updateMarkdown={mock_updateMarkdown} enablePreview={() => console.log("Enable Preview")} isDarkMode={false}/>);
     const user = userEvent.setup();
     const editorTextarea = ren.getByLabelText("edit markdown text");
 

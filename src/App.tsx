@@ -25,9 +25,6 @@ function App() {
 
   useEffect(() => {
     getMyDocuments();
-    console.log("Component initial render");
-    let currentDate = new Date().toLocaleString('en-us',{day: "numeric", month:'short', year:'numeric'});
-    console.log(currentDate);
   }, [])
   
   const openSidebar = () => {
